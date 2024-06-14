@@ -5,27 +5,26 @@ import style from "./MovieList.module.css";
 import PreviewMovie from "../../../Components/PreviewMovie/PreviewMovie";
 import { Pagination } from "@mui/material";
 
-function MovieList({ year }) {
+function MovieList({ years }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [years, setYears] = useState([1990, 2024]);
-  setYears(year);
-  console.log(year)
+
+  console.log(years);
   const handleChange = (e, value: number) => {
     setPage(value);
   };
 
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     const result = await Movies(years[0], years[1], 7, page, setError);
-  //     if (result) {
-  //       setData(result);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const result = await Movies(years, 7, page, setError);
+      if (result) {
+        setData(result);
+      }
+    };
 
-  //   fetchMovies();
-  // }, [page, years]);
+    fetchMovies();
+  }, [page, years]);
 
   if (error) {
     return <div>Error: {error.message}</div>;

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const URL = "https://api.kinopoisk.dev/v1.4/movie";
 
-export const Movies = async (yearStart, yaerEnd, rating, page, setError) => {
+export const Movies = async (years, rating, page, setError) => {
   try {
     const response = await axios.get(URL, {
       headers: {
@@ -11,12 +11,11 @@ export const Movies = async (yearStart, yaerEnd, rating, page, setError) => {
       params: {
         limit: "50",
         "rating.kp": rating,
-        "year.start": yearStart,
-        "year.end": yaerEnd,
+        year: `${years[0]}-${years[1]}`,
         page: page,
       },
     });
-    console.log(response.data);
+    console.log(years);
     return response.data;
   } catch (error) {
     setError(error);

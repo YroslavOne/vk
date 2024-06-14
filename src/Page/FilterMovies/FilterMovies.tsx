@@ -10,7 +10,7 @@ function FilterMovies() {
     <div className={style["container"]}>
       <h1 className={style["title"]}>Kinopoisk</h1>
       <RangeSlider setYear={setYear} />
-      <MovieList year={year} />
+      <MovieList years={year} />
     </div>
   );
 }

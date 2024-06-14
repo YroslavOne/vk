@@ -15,7 +15,7 @@ export default function RangeSlider({ setYear }) {
 
   const handleChange = (event: any, newValue: number | number[]) => {
     setValue(newValue as number[]);
-    // setYear(newValue as number[]);
+    setYear(newValue as number[]);
   };
   setYear(value);
   return (
