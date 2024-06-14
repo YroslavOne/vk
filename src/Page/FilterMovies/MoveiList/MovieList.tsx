@@ -1,11 +1,11 @@
 // import axios from "axios";
-import { useEffect, useState } from "react";
-import { Movies } from "../../../Api/Movies";
-import style from "./MovieList.module.css";
-import PreviewMovie from "../../../Components/PreviewMovie/PreviewMovie";
-import { Pagination } from "@mui/material";
+import { useEffect, useState } from 'react';
+import { Movies } from '../../../Api/Movies';
+import style from './MovieList.module.css';
+import PreviewMovie from '../../../Components/PreviewMovie/PreviewMovie';
+import { Pagination } from '@mui/material';
 
-function MovieList({ years }) {
+function MovieList({ years, rating }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
@@ -17,7 +17,7 @@ function MovieList({ years }) {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const result = await Movies(years, 7, page, setError);
+      const result = await Movies(years, rating, page, setError);
       if (result) {
         setData(result);
       }
@@ -36,7 +36,7 @@ function MovieList({ years }) {
 
   return (
     <div>
-      <div className={style["container"]}>
+      <div className={style['container']}>
         {data.docs.map((elem) => (
           <PreviewMovie
             id={elem.id}
