@@ -1,19 +1,19 @@
-import React from 'react';
-import { makeStyles } from '@mui/styles';
-import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider';
-import style from './RangeSlider.module.css';
-import { RangeSliderProps } from './RangeSlider.props';
+import React from "react";
+import { makeStyles } from "@mui/styles";
+import Typography from "@mui/material/Typography";
+import Slider from "@mui/material/Slider";
+import style from "./RangeSlider.module.css";
+import { RangeSliderProps } from "./RangeSlider.props";
 
 const useStyles = makeStyles({
   root: {
-    'min-width': 300,
+    "min-width": 300,
   },
 });
 
 export default function RangeSlider({
   name,
-  setYear,
+  setForElem,
   start,
   end,
 }: RangeSliderProps) {
@@ -22,9 +22,9 @@ export default function RangeSlider({
 
   const handleChange = (event: any, newValue: number | number[]) => {
     setValue(newValue as number[]);
-    setYear(newValue as number[]);
+    setForElem(newValue as number[]);
   };
-  setYear(value);
+  setForElem(value);
   return (
     <div className={classes.root}>
       <Typography id="range-slider" gutterBottom>

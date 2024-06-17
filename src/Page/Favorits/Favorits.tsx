@@ -1,36 +1,29 @@
-// import axios from "axios";
 import { useEffect, useState } from "react";
-import { Movies } from "../../../Api/Movies";
-import style from "./MovieList.module.css";
-import PreviewMovie from "../../../Components/PreviewMovie/PreviewMovie";
+import style from "./Favorits.module.css";
 import { Pagination } from "@mui/material";
-import { MovieListProps, MoviesResponse } from "./MovieList.props";
+import { useContextProvider } from "../../Context";
+import { TheMovie } from "../../Api/Movies";
 
-function MovieList({ options }: MovieListProps) {
-  const [data, setData] = useState<MoviesResponse | null>(null);
-  const [error, setError] = useState<Error | null>(null);
-  const [page, setPage] = useState<number>(1);
+function Favorits() {
+  const { idFavorites } = useContextProvider();
+  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (e, value: number) => {
     setPage(value);
   };
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const result = await Movies(
-        options.year,
-        options.rating,
-        page,
-        options.genreList,
-        setError
-      );
+      const result = await TheMovie('5637342, 5609795', setError);
       if (result) {
         setData(result);
       }
     };
 
     fetchMovies();
-  }, [page, options]);
+  }, []);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -63,4 +56,4 @@ function MovieList({ options }: MovieListProps) {
     </div>
   );
 }
-export default MovieList;
+export default Favorits;

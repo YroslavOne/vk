@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Button from '@mui/material/Button';
+import React, { useState } from "react";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
+import Button from "@mui/material/Button";
+import { useContextProvider } from "../../../Context";
+import style from './ControlledCheckbox.module.css'
 
-const Controlledheckbox = ({ items, setChecked }) => {
-  const [checkedItems, setCheckedItems] = useState([]);
+const Controlledheckbox = ({ items }) => {
+  const { genreList, setGenreList, toggleGenreList } = useContextProvider();
+  const [checkedItems, setCheckedItems] = useState(genreList);
 
   const handleChange = (item) => (event) => {
     if (event.target.checked) {
@@ -16,19 +19,21 @@ const Controlledheckbox = ({ items, setChecked }) => {
   };
 
   const handleSubmit = () => {
-    setChecked(checkedItems);
+    setGenreList(checkedItems);
+    toggleGenreList();
   };
 
   return (
-    <div>
-      <FormGroup>
+    <div className={style['container']}>
+      <FormGroup className={style['form-group']}>
         {items.map((item, index) => (
           <FormControlLabel
             key={index}
             control={
               <Checkbox
-                checked={checkedItems.includes(item.slug)}
-                onChange={handleChange(item.slug)}
+              
+                checked={checkedItems.includes(item.name)}
+                onChange={handleChange(item.name)}
                 color="primary"
               />
             }
@@ -37,7 +42,7 @@ const Controlledheckbox = ({ items, setChecked }) => {
         ))}
       </FormGroup>
       <Button variant="contained" color="primary" onClick={handleSubmit}>
-        Submit
+        Фильтровать
       </Button>
     </div>
   );

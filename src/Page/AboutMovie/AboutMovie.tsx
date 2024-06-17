@@ -38,7 +38,7 @@ function AboutMovie() {
         <Link to="/" className={styles["back"]}>
           back
         </Link>
-        <img className={styles["image"]} src={movie.poster.url} />
+        <img className={styles["image"]} src={movie.poster?.url} />
         <div className={styles["information"]}>
           <h2 className={styles["title"]}>{movie.name}</h2>
           <p className={styles["description"]}>{movie.description}</p>

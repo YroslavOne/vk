@@ -9,7 +9,7 @@ function PreviewMovie({ key, id, name, poster, year, rating  }: PreviewMovieProp
       <h2 className={style["h2"]}>{name}</h2>
       <img className={style["img"]} src={poster} />
       <time className={style["time"]}>{year}</time>
-      <Rating className={style["time"]} value={rating / 2} />
+      <Rating className={style["rating"]} value={rating / 2} />
     </NavLink>
   );
 }

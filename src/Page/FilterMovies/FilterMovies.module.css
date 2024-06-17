@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.filter{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.geners{
+    position: absolute;
+    width: 100vw;
+    top: 0px;
+    background-color: white;
+    z-index: 100;
+}

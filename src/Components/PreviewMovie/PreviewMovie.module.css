@@ -1,0 +1,27 @@
+.link{
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+
+}
+.h2{
+    text-decoration: none;
+}
+.img{
+    box-sizing: border-box;
+    max-width: 250px;
+
+
+}
+.time{
+
+}
+.rating{
+
+}

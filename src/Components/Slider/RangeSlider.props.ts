@@ -1,6 +1,6 @@
 export interface RangeSliderProps {
   name: string;
-  setYear: (value: number[]) => void;
+  setForElem: (value: number[]) => void;
   start: number;
   end: number;
 }
