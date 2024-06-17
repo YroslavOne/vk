@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "G84HAB6-QXB4J2Z-HF6Z8P8-H3GZQYY";
+const API_KEY = "SKXX5AA-1764W8B-MZ26WR2-0XZW2PX";
 const URL = "https://api.kinopoisk.dev/v1.4/movie";
 
 export const Movies = async (years, rating, page, genre, setError) => {

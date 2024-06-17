@@ -1,15 +1,16 @@
-import { Button, Rating } from "@mui/material";
+import { Rating } from "@mui/material";
 import styles from "./AboutMovie.module.css";
 import { TheMovie } from "../../Api/Movies";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Movie } from "./Movie";
+// import { Movie } from "./Movie";
 import { Link } from "react-router-dom";
+import { MovieProps } from "./AboutMovie.props";
 
 function AboutMovie() {
-  const { id } = useParams();
-  const [movie, setMovie] = useState<Movie>(null);
-  const [error, setError] = useState(null);
+  const { id } = useParams<{ id: string }>();
+  const [movie, setMovie] = useState<MovieProps | null>(null);
+  const [error, setError] = useState<Error | null>(null);
   // let rating = movie.rating.kp === 0 ? 0 : movie.rating.kp / 2;
 
   useEffect(() => {
@@ -47,7 +48,7 @@ function AboutMovie() {
             <Rating value={movie.rating.kp / 2} />
           </div>
 
-          <date className={styles["date"]}>Год производства: {movie.year}</date>
+          <div className={styles["date"]}>Год производства: {movie.year}</div>
 
           <div className={styles["genre"]}>
             <div className={styles["genre-title"]}> Жанры</div>

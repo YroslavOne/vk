@@ -8,7 +8,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<FilterMovies />} />
       <Route path="/movie/:id" element={<AboutMovie />} />
-      <Route path="/favorites" element={<Favorits />} />
+      {/* <Route path="/favorites" element={<Favorits />} /> */}
     </Routes>
   );
 };
