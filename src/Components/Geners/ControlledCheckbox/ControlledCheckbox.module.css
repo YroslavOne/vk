@@ -1,14 +1,14 @@
 .container {
-  position: absolute;
-  width: 100vw;
-  background-color: wheat;
-  z-index: 100;
-  top: 0px;
-  left: 0px;
+	top: 180px;
+	display: grid;
+	width: 100vw;
+	background-color: wheat;
+	z-index: 100;
 }
 
-.form-group {
-  display: grid;
-  grid-template-columns: repeat(4, 20%);
-  gap: 10px; /* расстояние между элементами */
+.formGroup {
+	display: flex;
+
+	grid-template-columns: repeat(4, 25%);
+	gap: 10px;
 }

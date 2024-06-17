@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, ReactNode } from "react";
+import React, { useState, createContext, useContext, ReactNode } from 'react';
 
 interface ContextProps {
   year: [number, number];
@@ -18,7 +18,7 @@ const Context = createContext<ContextProps | undefined>(undefined);
 export const useContextProvider = (): ContextProps => {
   const context = useContext(Context);
   if (!context) {
-    throw new Error("useContextProvider must be used within a ContextProvider");
+    throw new Error('useContextProvider must be used within a ContextProvider');
   }
   return context;
 };
@@ -28,16 +28,25 @@ interface ContextProviderProps {
 }
 
 const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
+  if (!localStorage.favorites) {
+    localStorage.favorites = JSON.stringify('');
+  }
   const [year, setYear] = useState<[number, number]>([1990, 2024]);
   const [rating, setRating] = useState<[number, number]>([0, 10]);
   const [genreList, setGenreList] = useState<string[]>([]);
   const [openGenreList, setOpenGenreList] = useState<boolean>(false);
-  const [idFavorites, setIdFavorites] = useState<number[]>([5637342, 5609795]);
+  const [idFavorites, setIdFavorites] = useState<number[]>(
+    JSON.parse(localStorage.favorites)
+  );
 
   const toggleGenreList = () => {
     setOpenGenreList(!openGenreList);
   };
 
+  const clickButtonFavorite = (id: number) => {
+    setIdFavorites([...idFavorites, id]);
+  };
+  localStorage.favorites = JSON.stringify(idFavorites);
   return (
     <Context.Provider
       value={{
@@ -51,6 +60,7 @@ const ContextProvider: React.FC<ContextProviderProps> = ({ children }) => {
         toggleGenreList,
         idFavorites,
         setIdFavorites,
+        clickButtonFavorite,
       }}
     >
       {children}

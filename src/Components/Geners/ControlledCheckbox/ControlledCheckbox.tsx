@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import Button from "@mui/material/Button";
-import { useContextProvider } from "../../../Context";
-import style from './ControlledCheckbox.module.css'
+import React, { useState } from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Button from '@mui/material/Button';
+import { useContextProvider } from '../../../Context';
+import style from './ControlledCheckbox.module.css';
 
 const Controlledheckbox = ({ items }) => {
   const { genreList, setGenreList, toggleGenreList } = useContextProvider();
@@ -25,13 +25,16 @@ const Controlledheckbox = ({ items }) => {
 
   return (
     <div className={style['container']}>
-      <FormGroup className={style['form-group']}>
+      <FormGroup
+        className={style['form-group']}
+        sx={{ display: 'flex', flexDirection: 'row', ml: 5 }}
+      >
         {items.map((item, index) => (
           <FormControlLabel
+            className={style['form-control']}
             key={index}
             control={
               <Checkbox
-              
                 checked={checkedItems.includes(item.name)}
                 onChange={handleChange(item.name)}
                 color="primary"
@@ -42,7 +45,7 @@ const Controlledheckbox = ({ items }) => {
         ))}
       </FormGroup>
       <Button variant="contained" color="primary" onClick={handleSubmit}>
-        Фильтровать
+        Выбрать
       </Button>
     </div>
   );

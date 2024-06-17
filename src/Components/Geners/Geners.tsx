@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { GenersGet } from "../../Api/Movies";
-import Controlledheckbox from "./ControlledCheckbox/ControlledCheckbox";
-import style from "./Geners.module.css";
+import { useEffect, useState } from 'react';
+import { GenersGet } from '../../Api/Movies';
+import Controlledheckbox from './ControlledCheckbox/ControlledCheckbox';
+import style from './Geners.module.css';
 
 function Geners() {
   const [genreList, setGenreList] = useState(null);
@@ -26,8 +26,6 @@ function Geners() {
     return <div>Loading...</div>;
   }
 
-  return (
-      <Controlledheckbox items={genreList} />
-  );
+  return <Controlledheckbox items={genreList} />;
 }
 export default Geners;
