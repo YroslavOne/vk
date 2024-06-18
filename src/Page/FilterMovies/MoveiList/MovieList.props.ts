@@ -1,7 +1,7 @@
 export interface MovieListProps {
   options: {
-    year: number[];
-    rating: number[];
+    year: [number, number];
+    rating: [number, number];
     genreList: string[];
   };
 }

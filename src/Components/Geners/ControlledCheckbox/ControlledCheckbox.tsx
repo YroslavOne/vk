@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Button from '@mui/material/Button';
 import { useContextProvider } from '../../../Context';
 import style from './ControlledCheckbox.module.css';
+import { ControlledCheckboxProps } from './ControlledCheckbox.props';
 
-const Controlledheckbox = ({ items }) => {
+const Controlledheckbox: React.FC<ControlledCheckboxProps>  = ({ items }) => {
   const { genreList, setGenreList, toggleGenreList } = useContextProvider();
-  const [checkedItems, setCheckedItems] = useState(genreList);
+  const [checkedItems, setCheckedItems] = useState<string[]>(genreList);
 
-  const handleChange = (item) => (event) => {
+  const handleChange = (item: string) => (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       setCheckedItems([...checkedItems, item]);
     } else {

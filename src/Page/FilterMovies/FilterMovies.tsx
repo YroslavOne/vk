@@ -1,13 +1,13 @@
-import style from './FilterMovies.module.css';
-import MovieList from './MoveiList/MovieList';
-import RangeSlider from '../../Components/Slider/RangeSlider';
-import { useState } from 'react';
-import Geners from '../../Components/Geners/Geners';
-import { useContextProvider } from '../../Context';
+import style from "./FilterMovies.module.css";
+import MovieList from "./MoveiList/MovieList";
+import RangeSlider from "../../Components/Slider/RangeSlider";
+import { useState } from "react";
+import Geners from "../../Components/Geners/Geners";
+import { useContextProvider } from "../../Context";
 
 interface optionsProps {
-  year: number[];
-  rating: number[];
+  year: [number, number];
+  rating: [number, number];
   genreList: string[];
 }
 
@@ -30,23 +30,21 @@ function FilterMovies() {
 
   const handleFilter = () => {
     setOptions({ year, rating, genreList });
-    console.log({ year, rating, genreList });
   };
-  console.log({ options });
 
   return (
-    <div className={style['container']}>
-      <h1 className={style['title']}>Кинопоиск</h1>
-      <div className={style['filter']}>
+    <div className={style["container"]}>
+      <h1 className={style["title"]}>Кинопоиск</h1>
+      <div className={style["filter"]}>
         <RangeSlider
           setForElem={setYear}
-          name={'Год'}
+          name={"Год"}
           start={1990}
           end={2024}
         />
         <RangeSlider
           setForElem={setRating}
-          name={'Рейтинг'}
+          name={"Рейтинг"}
           start={0}
           end={10}
         />
@@ -54,7 +52,7 @@ function FilterMovies() {
         <button onClick={handleFilter}> отфильтровать</button>
       </div>
       {openGenreList && (
-        <div className={style['genres']}>
+        <div className={style["genres"]}>
           <Geners />
         </div>
       )}

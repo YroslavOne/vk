@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
-import style from "./RangeSlider.module.css";
 import { RangeSliderProps } from "./RangeSlider.props";
 
 const useStyles = makeStyles({
@@ -18,11 +17,11 @@ export default function RangeSlider({
   end,
 }: RangeSliderProps) {
   const classes = useStyles();
-  const [value, setValue] = React.useState<number[]>([start, end]);
+  const [value, setValue] = React.useState<[number, number]>([start, end]);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
-    setForElem(newValue as number[]);
+  const handleChange = (event: Event, newValue: number | [number, number]) => {
+    setValue(newValue as [number, number]);
+    setForElem(newValue as [number, number]);
   };
   setForElem(value);
   return (

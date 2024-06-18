@@ -3,7 +3,6 @@ import styles from "./AboutMovie.module.css";
 import { TheMovie } from "../../Api/Movies";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-// import { Movie } from "./Movie";
 import { Link } from "react-router-dom";
 import { MovieProps } from "./AboutMovie.props";
 
@@ -11,7 +10,6 @@ function AboutMovie() {
   const { id } = useParams<{ id: string }>();
   const [movie, setMovie] = useState<MovieProps | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  // let rating = movie.rating.kp === 0 ? 0 : movie.rating.kp / 2;
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -31,7 +29,6 @@ function AboutMovie() {
   if (!movie) {
     return <div>Loading...</div>;
   }
-  console.log(movie);
 
   return (
     <div className={styles["container"]}>
@@ -53,8 +50,10 @@ function AboutMovie() {
           <div className={styles["genre"]}>
             <div className={styles["genre-title"]}> Жанры</div>
             <ul>
-              {movie.genres.map((genre) => (
-                <li className={styles["li"]}>{genre.name}</li>
+              {movie.genres.map((genre, index) => (
+                <li key={index} className={styles["li"]}>
+                  {genre.name}
+                </li>
               ))}
             </ul>
           </div>

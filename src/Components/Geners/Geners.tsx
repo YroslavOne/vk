@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import { GenersGet } from '../../Api/Movies';
-import Controlledheckbox from './ControlledCheckbox/ControlledCheckbox';
-import style from './Geners.module.css';
+import { useEffect, useState } from "react";
+import { GenersGet } from "../../Api/Movies";
+import Controlledheckbox from "./ControlledCheckbox/ControlledCheckbox";
+
+interface Item {
+  name: string;
+}
 
 function Geners() {
-  const [genreList, setGenreList] = useState(null);
-  const [error, setError] = useState(null);
+  const [genreList, setGenreList] = useState<Item[] | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchMovie = async () => {

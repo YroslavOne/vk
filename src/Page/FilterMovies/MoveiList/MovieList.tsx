@@ -1,4 +1,4 @@
-// import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { Movies } from "../../../Api/Movies";
 import style from "./MovieList.module.css";

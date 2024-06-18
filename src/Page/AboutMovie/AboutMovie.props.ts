@@ -6,7 +6,7 @@ export interface MovieProps {
   rating: {
     kp: number;
   };
-  poster?: {
+  poster: {
     url: string;
   };
   genres: { name: string }[];

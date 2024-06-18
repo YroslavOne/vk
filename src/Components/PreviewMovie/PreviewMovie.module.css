@@ -10,6 +10,9 @@
     justify-content: center;
 
 }
+a{
+    text-decoration: none;
+}
 .h2{
     text-decoration: none;
 }
@@ -21,7 +24,14 @@
 }
 .time{
 
+
 }
 .rating{
 
+}
+.content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
